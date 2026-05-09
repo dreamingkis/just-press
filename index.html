@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>일단해프레스 / JUST PRESS — Color v2</title>
+  <meta name="description" content="마음먹으면 일단 저지르는 세 명이 함께하는 작은 독립출판팀, 일단해프레스 / JUST PRESS" />
+  <meta property="og:title" content="일단해프레스 / JUST PRESS" />
+  <meta property="og:description" content="마음먹으면 일단 저지르는 세 명이 함께합니다." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --bg: #f3efe6;
+      --paper: #fffdf7;
+      --ink: #1f211f;
+      --muted: #6d6a61;
+      --line: #d8d0c1;
+      --accent: #26352f;
+      --accent-2: #9a4f35;
+      --soft: #e8dfd0;
+      --max: 1120px;
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", Segoe UI, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(154,79,53,.14), transparent 34rem),
+        radial-gradient(circle at 88% 18%, rgba(38,53,47,.10), transparent 28rem),
+        linear-gradient(180deg, #fffdf7 0%, var(--bg) 48%, #e8dfd0 100%);
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(255,253,247,.82);
+      border-bottom: 1px solid rgba(36,32,28,.08);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -.03em;
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 96px 0 72px;
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,250,242,.58);
+      color: var(--accent-2);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: .02em;
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(48px, 8vw, 104px);
+      line-height: .92;
+      letter-spacing: -.06em;
+      text-wrap: balance;
+    }
+
+    .hero-title-kor {
+      display: block;
+      margin-bottom: 8px;
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+      font-size: clamp(34px, 5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -.08em;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 0;
+      color: #4d453e;
+      font-size: clamp(18px, 2.2vw, 24px);
+      line-height: 1.58;
+      letter-spacing: -.02em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -.01em;
+      border: 1px solid transparent;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #fffdf7;
+      box-shadow: 0 14px 30px rgba(36,32,28,.16);
+    }
+
+    .button.secondary {
+      background: rgba(255,250,242,.7);
+      border-color: var(--line);
+      color: var(--ink);
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 520px;
+      border: 1px solid rgba(36,32,28,.12);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #fffdf7, #e8dfd0);
+      box-shadow: 0 34px 80px rgba(68,48,30,.14);
+      overflow: hidden;
+      padding: 26px;
+    }
+
+    .book-cover {
+      height: 100%;
+      border-radius: 22px;
+      border: 1px solid rgba(36,32,28,.16);
+      background:
+        linear-gradient(rgba(36,32,28,.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(36,32,28,.08) 1px, transparent 1px),
+        linear-gradient(160deg, #e9e0d2, #fffdf7 48%, #c9ad91);
+      background-size: 26px 26px, 26px 26px, auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 34px;
+    }
+
+    .cover-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--accent-2);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .cover-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 5vw, 70px);
+      line-height: .95;
+      letter-spacing: -.06em;
+      max-width: 8ch;
+    }
+
+    .cover-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section { padding: 70px 0; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 30px;
+      border-top: 1px solid var(--line);
+      padding-top: 28px;
+    }
+
+    .section-kicker {
+      color: var(--accent-2);
+      font-weight: 900;
+      letter-spacing: .08em;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.12;
+      letter-spacing: -.06em;
+      text-wrap: balance;
+    }
+
+    .body-large {
+      margin: 0;
+      color: #4e463e;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.75;
+      letter-spacing: -.025em;
+    }
+
+    .three-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .person-card, .info-card, .book-info {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,253,247,.72);
+      padding: 24px;
+    }
+
+    .person-card h3, .info-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -.04em;
+    }
+
+    .person-card p, .info-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .person-link {
+      display: inline-flex;
+      margin-top: 18px;
+      min-height: 36px;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(155,106,67,.10);
+      color: var(--accent-2);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .person-link:hover {
+      background: rgba(155,106,67,.18);
+    }
+
+    .book-intro {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 28px;
+      border-top: 1px solid var(--line);
+      padding-top: 28px;
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .book-card {
+      min-height: 520px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255,250,242,.68);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      color: inherit;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(68,48,30,.13);
+      border-color: rgba(155,106,67,.42);
+    }
+
+    .book-card:focus-visible {
+      outline: 3px solid rgba(155,106,67,.45);
+      outline-offset: 4px;
+    }
+
+    .book-cover-small {
+      min-height: 230px;
+      padding: 26px;
+      background:
+        linear-gradient(rgba(36,32,28,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(36,32,28,.06) 1px, transparent 1px),
+        linear-gradient(150deg, #e9e0d2, #fffdf7 52%, #c9ad91);
+      background-size: 24px 24px, 24px 24px, auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .book-card:nth-child(2) .book-cover-small {
+      background:
+        linear-gradient(rgba(255,250,242,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,250,242,.06) 1px, transparent 1px),
+        linear-gradient(150deg, #26352f, #53645a 58%, #1f211f);
+      background-size: 24px 24px, 24px 24px, auto;
+      color: #fffdf7;
+    }
+
+    .book-card:nth-child(3) .book-cover-small {
+      background:
+        linear-gradient(rgba(36,32,28,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(36,32,28,.05) 1px, transparent 1px),
+        linear-gradient(150deg, #ead9ca, #fff8ee 55%, #b77c61);
+      background-size: 24px 24px, 24px 24px, auto;
+    }
+
+    .book-label {
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--accent-2);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .book-card:nth-child(2) .book-label { color: #d8b28f; }
+
+    .book-title {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 38px;
+      line-height: .98;
+      letter-spacing: -.06em;
+      text-wrap: balance;
+    }
+
+    .book-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .book-content p {
+      margin: 0;
+      color: #4e463e;
+      font-size: 15px;
+      line-height: 1.72;
+      letter-spacing: -.015em;
+    }
+
+    .meta-list {
+      display: grid;
+      gap: 0;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(222,208,191,.72);
+      font-size: 13px;
+    }
+
+    .meta-row:last-child { border-bottom: 0; }
+    .meta-row b { color: var(--accent-2); }
+    .meta-row span { color: #4b433c; }
+
+    .event-band {
+      border-radius: 32px;
+      background: #26352f;
+      color: #fffdf7;
+      padding: clamp(30px, 5vw, 54px);
+      display: grid;
+      grid-template-columns: 1fr .78fr;
+      gap: 34px;
+      align-items: end;
+    }
+
+    .event-band h2 { color: #fffaf2; }
+    .event-band p { color: rgba(255,250,242,.72); }
+
+    .event-list {
+      border: 1px solid rgba(255,250,242,.18);
+      border-radius: 22px;
+      padding: 20px;
+      background: rgba(255,255,255,.05);
+    }
+
+    .event-list div {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,250,242,.14);
+    }
+
+    .event-list div:last-child { border-bottom: 0; }
+    .event-list b { color: #d8b28f; }
+
+    .contact {
+      text-align: center;
+      padding-bottom: 96px;
+    }
+
+    .contact-box {
+      max-width: 760px;
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background: rgba(255,250,242,.7);
+      padding: clamp(34px, 5vw, 58px);
+    }
+
+    .contact-box h2 { margin-bottom: 16px; }
+    .contact-box p { margin: 0 auto 28px; max-width: 560px; color: var(--muted); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .hero, .event-band, .section-head, .book-intro { grid-template-columns: 1fr; }
+      .hero { padding-top: 54px; }
+      .hero-card { min-height: 430px; }
+      .three-grid, .book-grid { grid-template-columns: 1fr; }
+      section { padding: 48px 0; }
+      .event-band { align-items: start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="주요 메뉴">
+      <a class="brand" href="#top">일단해프레스</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#people">People</a>
+        <a href="#book">Book</a>
+        <a href="#event">Fair</a>
+
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <span class="eyebrow">2026 Seoul Publishers’ Table</span>
+      <h1><span class="hero-title-kor">일단해프레스</span>JUST PRESS</h1>
+      <p class="lead">마음먹으면 일단 저지르는 세 명이 함께합니다. 기록하고, 만들고, 사람을 연결해온 우리가 작은 독립출판팀으로 만났습니다.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#book">참가 도서 보기</a>
+        <a class="button secondary" href="#people">함께하는 사람들</a>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">About</div>
+          <div>
+            <h2>완벽하게 준비된 뒤가 아니라, 마음이 움직인 순간 시작하는 사람들.</h2>
+            <p class="body-large" style="margin-top:22px;">일단해프레스는 각자의 자리에서 기록하고, 책을 만들고, 사람의 이야기를 들어온 세 사람이 함께 만든 작은 독립출판팀입니다. 작고 사적인 기록이 누군가에게는 오래 남는 문장이 될 수 있다고 믿습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="people">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">People</div>
+          <div>
+            <h2>서로 다른 일을 해왔지만, 우리는 모두 기록이 사람을 움직인다고 믿습니다.</h2>
+          </div>
+        </div>
+        <div class="three-grid">
+          <article class="person-card">
+            <h3>서점사장 김경희</h3>
+            <p>책이 사람과 만나는 장면을 가장 가까이에서 지켜봅니다.</p>
+            <a class="person-link" href="https://www.instagram.com/kim.kyunghee_/" target="_blank" rel="noreferrer">@kim.kyunghee_</a>
+          </article>
+          <article class="person-card">
+            <h3>기록친구 리니</h3>
+            <p>일상의 기록을 자기만의 언어와 아카이브로 쌓아가는 기록 인플루언서입니다.</p>
+            <a class="person-link" href="https://www.instagram.com/rini_archive/" target="_blank" rel="noreferrer">@rini_archive</a>
+          </article>
+          <article class="person-card">
+            <h3>강점코치 김인숙</h3>
+            <p>사람이 가진 고유한 방향과 가능성을 발견하고 언어로 정리합니다.</p>
+            <a class="person-link" href="https://www.instagram.com/your_road_map/" target="_blank" rel="noreferrer">@your_road_map</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="book">
+      <div class="wrap">
+        <div class="book-intro">
+          <div class="section-kicker">Books</div>
+          <div>
+            <h2>일단해프레스가 준비한 세 권의 책.</h2>
+            <p class="body-large" style="margin-top:18px;">크리에이터의 기록 아카이브, 10년 만에 돌아온 B급 에세이, 프리랜서를 위한 실전 예언집까지. 각자의 자리에서 쌓아온 기록과 경험을 세 권의 독립출판물로 엮었습니다.</p>
+          </div>
+        </div>
+
+        <div class="book-grid" aria-label="참가 도서 3권">
+          <a class="book-card" href="https://www.instagram.com/rini_archive/" target="_blank" rel="noreferrer" aria-label="The Record Archive 작가 기록친구 리니 인스타그램으로 이동">
+            <div class="book-cover-small">
+              <div class="book-label">Book 01</div>
+              <h3 class="book-title">The Record Archive</h3>
+            </div>
+            <div class="book-content">
+              <p>기록친구 리니의 기록 노트를 아카이브 형식으로 엮은 책입니다. 매일의 기록, 흩어진 문장, 오래 붙잡고 싶었던 생각들을 모아 한 사람의 기록 세계를 책의 형태로 정리했습니다.</p>
+              <div class="meta-list">
+                <div class="meta-row"><b>형태</b><span>아카이브북</span></div>
+                <div class="meta-row"><b>크기</b><span>188 × 257 mm</span></div>
+                <div class="meta-row"><b>분량</b><span>240p</span></div>
+                <div class="meta-row"><b>가격</b><span>35,000원</span></div>
+                <div class="meta-row"><b>작가</b><span>기록친구 리니 · @rini_archive</span></div>
+              </div>
+            </div>
+          </a>
+
+          <a class="book-card" href="https://www.instagram.com/kim.kyunghee_/" target="_blank" rel="noreferrer" aria-label="다시 돌아온 30대 찌질한 인간 김경희 작가 인스타그램으로 이동">
+            <div class="book-cover-small">
+              <div class="book-label">Book 02</div>
+              <h3 class="book-title">다시 돌아온 30대) 찌질한 인간 김경희</h3>
+            </div>
+            <div class="book-content">
+              <p>남들처럼, 나답게도 살지 못하던 20대의 찌질한 날들을 썼던 김경희가 10년 만에 돌아왔습니다. 제법 그럴듯한 사회인으로 자리 잡은 것 같지만, 여전히 찌질한 김경희가 전하는 B급 에세이입니다.</p>
+              <div class="meta-list">
+                <div class="meta-row"><b>형태</b><span>에세이</span></div>
+                <div class="meta-row"><b>크기</b><span>107 × 170 mm</span></div>
+                <div class="meta-row"><b>분량</b><span>페이지 미정</span></div>
+                <div class="meta-row"><b>가격</b><span>가격 미정</span></div>
+                <div class="meta-row"><b>작가</b><span>김경희 · @kim.kyunghee_</span></div>
+              </div>
+            </div>
+          </a>
+
+          <a class="book-card" href="https://www.instagram.com/your_road_map/" target="_blank" rel="noreferrer" aria-label="프리랜서 예언집 작가 김인숙 인스타그램으로 이동">
+            <div class="book-cover-small">
+              <div class="book-label">Book 03</div>
+              <h3 class="book-title">프리랜서 예언집</h3>
+            </div>
+            <div class="book-content">
+              <p>이제 막 프리랜서가 된 당신을 위한 프리랜서 선배의 실전 상황 47가지 예언집입니다. 브랜딩과 마케팅부터 세금, 계약, 무례한 클라이언트 대응까지. 한 권으로 프리랜서의 고난과 역경을 예방할 수 있기를 바랍니다.</p>
+              <div class="meta-list">
+                <div class="meta-row"><b>형태</b><span>실용서</span></div>
+                <div class="meta-row"><b>크기</b><span>118 × 189 mm</span></div>
+                <div class="meta-row"><b>분량</b><span>176p</span></div>
+                <div class="meta-row"><b>가격</b><span>15,000원</span></div>
+                <div class="meta-row"><b>작가</b><span>김인숙 · @your_road_map</span></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="event">
+      <div class="wrap">
+        <div class="event-band">
+          <div>
+            <div class="section-kicker">Fair</div>
+            <h2>2026 서울 퍼블리셔스 테이블에서 만나요.</h2>
+            <p class="body-large" style="margin-top:18px;">현장에서 책을 직접 보고, 만든 사람들과 이야기를 나누실 수 있습니다. 작은 기록이 어떻게 책이 되는지 궁금한 분들을 기다립니다.</p>
+          </div>
+          <div class="event-list">
+            <div><b>행사명</b><span>2026 서울 퍼블리셔스 테이블</span></div>
+            <div><b>팀명</b><span>일단해프레스 / JUST PRESS</span></div>
+            <div><b>참가도서</b><span>The Record Archive</span></div>
+            <div><b>부스번호</b><span>추후 업데이트</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">© JUST PRESS / 일단해프레스. 마음먹으면 일단 저지르는 세 명이 함께합니다.</div>
+  </footer>
+</body>
+</html>
